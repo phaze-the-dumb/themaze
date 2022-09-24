@@ -7,7 +7,8 @@ let wallCanvas = document.createElement('canvas'),
 let motionBlurCanvas = document.createElement('canvas'),
     motionBlurCtx = motionBlurCanvas.getContext('2d');
 
-let isMenuOpen = true;
+let isMenuOpen = true,
+    isChatOpen = false;
 
 let map = {
     width: 1000,
@@ -25,11 +26,11 @@ for(let x = 0; x < map.width / 20; x++){
             map.walls.push({ x, y });
         } else if(x % 2 === 0 && y % 2 === 0){
             if(Math.random() > map.placementThresh){
-                map.walls.push({ x, y });
+                map.walls.push({ x, y, xo: 0, yo: 0 });
 
                 let a = Math.random() < 0.5 ? 0 : ( Math.random() < 0.5 ? -1: 1);
                 let b = a != 0 ? 0 : ( Math.random() < 0.5 ? -1 : 1 );
-                map.walls.push({ x: x + a, y: y + b });
+                map.walls.push({ x: x + a, y: y + b, xo: 0, yo: 0 });
             }
         }
     }

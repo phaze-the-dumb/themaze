@@ -9,9 +9,21 @@ let lerp = (x, y, a) => x * (1 - a) + y * a,
 let stickman = new Image();
 stickman.src = '/assets/imgs/jerry.png';
 
+let hedge1 = new Image();
+hedge1.src = '/assets/imgs/hedge.png';
+
+let grass1 = new Image();
+grass1.src = '/assets/imgs/grass.png';
+
+let hedgeMoveX = 0,
+    hedgeMoveY = 0;
+
 setInterval(() => {
     fps = fpsCount;
     fpsCount = 0;
+
+    hedgeMoveX = Math.random() * 2 - 1;
+    hedgeMoveY = Math.random() * 2 - 1;
 }, 1000)
 
 let renderedBlocks = 0;
@@ -38,8 +50,24 @@ let render = () => {
     renderedBlocks = 0;
 
     // Floor
-    ctx.fillStyle = '#4d8724';
-    ctx.fillRect(0 - camX * camScale, 0 - camY * camScale, map.width * camScale, map.height * camScale);
+    for (let x = 0; x < map.width / 20; x++) {
+        for (let y = 0; y < map.height / 20; y++) {
+            if(
+                ((map.width / 50) * x - camX + (map.width / 50)) * camScale > canvas.width / -2 &&
+                ((map.height / 50) * y - camY + (map.height / 50)) * camScale > canvas.height / -2 &&
+                ((map.width / 50) * x - camX - (map.width / 50)) * camScale + (map.width / 50) * camScale < canvas.width / 2 &&
+                ((map.height / 50) * y - camY - (map.height / 50)) * camScale + (map.height / 50) * camScale < canvas.height / 2
+            ){
+                ctx.drawImage(grass1,
+                    ((map.width / 50) * x - camX) * camScale,
+                    ((map.height / 50) * y - camY) * camScale,
+                    ((map.width / 50) * camScale) + 1,
+                    ((map.height / 50) * camScale) + 1
+                );
+                renderedBlocks++;
+            }
+        }
+    }
 
     // Exit
     ctx.shadowBlur = 0;
@@ -66,10 +94,13 @@ let render = () => {
             (((20 * w.x) - camX + 20) * camScale) > canvas.width / -2 &&
             (((20 * w.y) - camY + 20) * camScale) > canvas.height / -2 &&
             ((((20 * w.x) - camX - 20) * camScale) + (20 * camScale)) < canvas.width / 2 &&
-            ((((20 * w.y) - camY - 20) * camScale) + (20 * camScale))  < canvas.height / 2
+            ((((20 * w.y) - camY - 20) * camScale) + (20 * camScale)) < canvas.height / 2
         ){
-            wallCtx.fillRect(((20 * w.x) - camX) * camScale, ((20 * w.y) - camY) * camScale, 20 * camScale, 20 * camScale);
+            wallCtx.drawImage(hedge1, ((20 * w.x) - camX - 2 + w.xo) * camScale, ((20 * w.y) - camY - 2 + w.yo) * camScale, 22 * camScale, 22 * camScale);
             renderedBlocks++;
+
+            w.xo = lerp(w.xo, hedgeMoveX, 0.01);
+            w.yo = lerp(w.yo, hedgeMoveY, 0.01);
         }
     })
 

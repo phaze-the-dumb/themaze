@@ -46,27 +46,27 @@ let move = () => {
     let prevY = playerY;
 
     // If t key is down trade places
-    if(isKeyDown['t'] && allowMovement){
+    if(isKeyDown['t'] && allowMovement && !isChatOpen){
         trade();
     }
 
     // Move Forwards
-    if(isKeyDown['w'] && allowMovement){
+    if(isKeyDown['w'] && allowMovement && !isChatOpen){
         playerY -= speed * dt;
     }
 
     // Move Backwards
-    if(isKeyDown['s'] && allowMovement){
+    if(isKeyDown['s'] && allowMovement && !isChatOpen){
         playerY += speed * dt;
     }
 
     // Move Left
-    if(isKeyDown['a'] && allowMovement){
+    if(isKeyDown['a'] && allowMovement && !isChatOpen){
         playerX -= speed * dt;
     }
     
     // Move Right
-    if(isKeyDown['d'] && allowMovement){
+    if(isKeyDown['d'] && allowMovement && !isChatOpen){
         playerX += speed * dt;
     }
 
@@ -109,7 +109,32 @@ let move = () => {
 
 // Detect Keys down / up
 window.onkeydown = (e) => isKeyDown[e.key] = true;
-window.onkeyup = (e) => isKeyDown[e.key] = false;
+window.onkeyup = (e) => {
+    isKeyDown[e.key] = false;
+
+    // Open / Close Chat
+    if(e.key === 'Enter'){
+        if(isChatOpen){
+            isChatOpen = false;
+            document.querySelector('.textChatInput').style.display = 'none';
+
+            ws.send(JSON.stringify({ type: 'sendMsg', content: document.querySelector('.textChatInput').value }));
+            document.querySelector('.textChatInput').value = '';
+        } else{
+            isChatOpen = true;
+
+            document.querySelector('.textChatInput').style.display = 'block';
+            document.querySelector('.textChatInput').focus();
+        }
+    }
+
+    // Close Chat On Escape
+    if(e.key === 'Escape' && isChatOpen){
+        isChatOpen = false;
+        document.querySelector('.textChatInput').style.display = 'none';
+        document.querySelector('.textChatInput').value = '';
+    }
+}
 
 // Detect Mouse down / up
 window.onmousedown = () => isMouseDown = true;

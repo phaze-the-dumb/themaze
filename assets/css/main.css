@@ -244,7 +244,7 @@ input{
 
 .thefuckyouchat{
     position: fixed;
-    bottom: 0;
+    bottom: 35px;
     right: 0;
     text-align: right; 
 }
@@ -256,4 +256,18 @@ input{
     min-width: 350px;
     max-width: 600px;
     transition: 0.25s;
+    color: white;
+}
+
+.textChatInput{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    background: #0005;
+    padding: 5px;
+    height: 30px;
+    font-size: 20px;
+    width: 50%;
+    display: none;
 }
