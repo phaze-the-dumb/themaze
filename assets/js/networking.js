@@ -81,6 +81,7 @@ ws.onmessage = ( data ) => {
     if(msg.type === 'mainMenuLoad'){
         document.querySelector('.mainMenu').style.display = 'block';
         document.querySelector('.serverLobby').style.display = 'none';
+        document.querySelector('.tradeButton').style.display = 'none';
 
         renderOtherPlayers = false;
         renderSelf = false;
