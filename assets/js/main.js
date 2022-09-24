@@ -118,6 +118,8 @@ let showError = ( body, allowClose = true ) => {
 
 // Changing Name On Server
 let setName = ( name ) => {
+    if(name.length > 25)name = name.slice(0, 25);
+
     localStorage.setItem('playerName', name);
     ws.send(JSON.stringify({ type: 'fixName', name }));
 }
