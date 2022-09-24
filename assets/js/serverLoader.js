@@ -1,7 +1,10 @@
 let oplayers = [];
 let allowTrade = true;
+let cServer = null;
 
 let loadServer = ( server ) => {
+    cServer = server;
+
     document.querySelector('.mainMenu').style.display = 'none';
     document.querySelector('.serverLobby').style.display = 'block';
 
@@ -13,6 +16,19 @@ let loadServer = ( server ) => {
     } else if(server.mode === 'Pair'){
         document.querySelector('#modeDesc').innerHTML = 
             'Pair: Get you and your partner out of the maze as quickly as possible before anyone else, you can trade places with them every 5 seconds. REQUIRES AN EVEN NUMBER OF PLAYERS TO PLAY!';
+    }
+
+    if(server.owner){
+        if(server.inGame){
+            document.querySelector('#startGameBtn').style.display = 'none';
+            document.querySelector('#endGameBtn').style.display = 'block';
+        } else{
+            document.querySelector('#startGameBtn').style.display = 'block';
+            document.querySelector('#endGameBtn').style.display = 'none';
+        }
+    } else{
+        document.querySelector('#startGameBtn').style.display = 'none';
+        document.querySelector('#endGameBtn').style.display = 'none';
     }
     
     document.querySelector('#playersList').innerHTML = 'Loading...';
@@ -68,8 +84,11 @@ let playerPositionUpdate = ( players ) => {
 let leaveGame = () =>
     ws.send(JSON.stringify({ type: 'leaveServer' }));
 
-let gameStart = () =>
+let gameStart = () => 
     ws.send(JSON.stringify({ type: 'startGame' }));
+    
+let gameEnd = () => 
+    ws.send(JSON.stringify({ type: 'endGame' }));
 
 let trade = () => {
     if(allowTrade){

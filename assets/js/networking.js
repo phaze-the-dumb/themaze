@@ -128,6 +128,11 @@ ws.onmessage = ( data ) => {
 
         document.querySelector('.mainMenu').style.display = 'none';
         document.querySelector('.serverLobby').style.display = 'none';
+
+        if(cServer.owner){
+            document.querySelector('#startGameBtn').style.display = 'none';
+            document.querySelector('#endGameBtn').style.display = 'block';
+        }
     }
 
     // if its saying you have won, display the finished message to the user
@@ -165,6 +170,11 @@ ws.onmessage = ( data ) => {
 
         renderSelf = false;
         renderOtherPlayers = false;
+
+        if(cServer.owner){
+            document.querySelector('#startGameBtn').style.display = 'block';
+            document.querySelector('#endGameBtn').style.display = 'none';
+        }
 
         setTimeout(() => {
             document.querySelector('.youwin').style.display = 'none';
