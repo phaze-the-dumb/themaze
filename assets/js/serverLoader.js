@@ -21,9 +21,9 @@ let loadServer = ( server ) => {
     if(server.owner){
         if(server.inGame){
             document.querySelector('#startGameBtn').style.display = 'none';
-            document.querySelector('#endGameBtn').style.display = 'block';
+            document.querySelector('#endGameBtn').style.display = 'inline-block';
         } else{
-            document.querySelector('#startGameBtn').style.display = 'block';
+            document.querySelector('#startGameBtn').style.display = 'inline-block';
             document.querySelector('#endGameBtn').style.display = 'none';
         }
     } else{
