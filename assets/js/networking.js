@@ -160,7 +160,7 @@ ws.onmessage = ( data ) => {
         allowMovement = false;
 
         document.querySelector('.mainMenu').style.display = 'none';
-        document.querySelector('.serverLobby').style.display = 'inline-block';
+        document.querySelector('.serverLobby').style.display = 'block';
 
         document.querySelector('.youwin').style.opacity = '0';
 
@@ -172,7 +172,7 @@ ws.onmessage = ( data ) => {
         renderOtherPlayers = false;
 
         if(cServer.owner){
-            document.querySelector('#startGameBtn').style.display = 'block';
+            document.querySelector('#startGameBtn').style.display = 'inline-block';
             document.querySelector('#endGameBtn').style.display = 'none';
         }
 
