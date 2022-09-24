@@ -16,8 +16,8 @@ let playerX = map.width / 2,
     isMouseDown = false,
     allowMovement = false,
     camDistance = 5,
-    sendPos = false;
-
+    sendPos = false,
+    lastMessage = 0;
 
 // Detect Mouse Movements
 window.onmousemove = ( e ) => {
@@ -115,8 +115,13 @@ window.onkeyup = (e) => {
     // Open / Close Chat
     if(e.key === 'Enter'){
         if(isChatOpen){
+            if(document.querySelector('.textChatInput').value.length > 273)return;
+            if(Date.now() - lastMessage < 400)return;
+
             isChatOpen = false;
             document.querySelector('.textChatInput').style.display = 'none';
+
+            lastMessage = Date.now();
 
             ws.send(JSON.stringify({ type: 'sendMsg', content: document.querySelector('.textChatInput').value }));
             document.querySelector('.textChatInput').value = '';
