@@ -124,7 +124,7 @@ window.onkeyup = (e) => {
 
             document.querySelector('.textChatInput').style.display = 'none';
             ws.send(JSON.stringify({ type: 'sendMsg', content: document.querySelector('.textChatInput').value }));
-            
+
             document.querySelector('.textChatInput').value = '';
         } else{
             isChatOpen = true;
@@ -139,6 +139,12 @@ window.onkeyup = (e) => {
         isChatOpen = false;
         document.querySelector('.textChatInput').style.display = 'none';
         document.querySelector('.textChatInput').value = '';
+    } else if(e.key === 'Escape' && !isGameMenuOpen){
+        isGameMenuOpen = true;
+        document.querySelector('.serverLobby').style.display = 'block';
+    } else if(e.key === 'Escape' && isGameMenuOpen){
+        isGameMenuOpen = false;
+        document.querySelector('.serverLobby').style.display = 'none';
     }
 }
 

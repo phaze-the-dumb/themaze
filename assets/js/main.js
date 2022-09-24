@@ -8,7 +8,8 @@ let motionBlurCanvas = document.createElement('canvas'),
     motionBlurCtx = motionBlurCanvas.getContext('2d');
 
 let isMenuOpen = true,
-    isChatOpen = false;
+    isChatOpen = false,
+    isGameMenuOpen = false;
 
 let map = {
     width: 1000,
