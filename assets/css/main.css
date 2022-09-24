@@ -202,7 +202,7 @@ input{
     height: 75px;
     border-radius: 50%;
     border: rgba(245, 245, 245, 0.774) 4px solid;
-    background: url('../assets/imgs/jerryrunicon.png'), #fff5;
+    background: url('/assets/imgs/jerryrunicon.png'), #fff5;
     background-size: cover;
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
