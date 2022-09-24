@@ -117,13 +117,14 @@ window.onkeyup = (e) => {
         if(isChatOpen){
             if(document.querySelector('.textChatInput').value.length > 273)return;
             if(Date.now() - lastMessage < 400)return;
-
-            isChatOpen = false;
-            document.querySelector('.textChatInput').style.display = 'none';
+            if(document.querySelector('.textChatInput').value.trim() === '')return;
 
             lastMessage = Date.now();
+            isChatOpen = false;
 
+            document.querySelector('.textChatInput').style.display = 'none';
             ws.send(JSON.stringify({ type: 'sendMsg', content: document.querySelector('.textChatInput').value }));
+            
             document.querySelector('.textChatInput').value = '';
         } else{
             isChatOpen = true;
