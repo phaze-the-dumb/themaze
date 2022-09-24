@@ -50,6 +50,14 @@ ws.onmessage = ( data ) => {
         div.innerHTML = msg.content + ' <span style="color: skyblue;">'+msg.author+'</span>';
 
         document.querySelector('.thefuckyouchat').appendChild(div);
+
+        setTimeout(() => {
+            div.style.opacity = '0';
+
+            setTimeout(() => {
+                div.remove();
+            }, 250);
+        }, 10000);
     }
 
     // onnotice
@@ -59,6 +67,14 @@ ws.onmessage = ( data ) => {
         div.innerHTML = '<span style="color: #47e50d;">'+msg.content+'</span>';
 
         document.querySelector('.thefuckyouchat').appendChild(div);
+
+        setTimeout(() => {
+            div.style.opacity = '0';
+
+            setTimeout(() => {
+                div.remove();
+            }, 250);
+        }, 10000);
     }
 
     // if its focing you to open the main menu, open the main menu
