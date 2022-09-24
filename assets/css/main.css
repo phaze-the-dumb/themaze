@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    background: black;
+}
+
+.errorMessage{
+    position: fixed;
+    color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 700px;
+    height: 171px;
+    background: url('/assets/imgs/popupmenu.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+}
+
+.errorClose{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 25px;
+    user-select: none;
+    cursor: pointer;
+    z-index: 10000000;
+}
+
+.mainMenu{
+    position: fixed;
+    left: 0px;
+    top: 0;
+    width: calc(50% - 20px);
+    padding: 200px 10px;
+    height: calc(100% - 400px);
+}
+
+button{
+    background: url('/assets/imgs/btn-normal.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    font-size: 17px;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    width: 248px;
+    cursor: pointer;
+    height: 56px;
+    color: rgb(214, 214, 214);
+}
+
+button:hover{
+    background: url('/assets/imgs/btn-hover.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+}
+
+button:active{
+    background: url('/assets/imgs/btn-click.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+}
+
+.btnContainer{
+    padding: 20px;
+}
+
+.titleImage{
+    font-size: 55px;
+    font-family: 'Bungee Spice', cursive;
+    text-shadow: black 0px 0px 10px;
+}
+
+.floatingMenu{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input{
+    background: url('/assets/imgs/inputBox.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    border: none;
+    width: 300px;
+    height: 48px;
+    padding: 20px;
+    outline: none;
+    color: white;
+    font-size: 17px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.privateCheckBox{
+    width: 28px;
+    height: 28px;
+    background: url('/assets/imgs/privateBtn-normal.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.privateCheckBox:hover{
+    width: 28px;
+    height: 28px;
+    background: url('/assets/imgs/privateBtn-hover.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.publicCheckBox{
+    width: 28px;
+    height: 28px;
+    background: url('/assets/imgs/publicBtn-normal.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.publicCheckBox:hover{
+    width: 28px;
+    height: 28px;
+    background: url('/assets/imgs/publicBtn-hover.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.serversList{
+    max-height: 250px;
+    overflow: auto;
+}
+
+.serverForList{
+    background: #0005;
+    padding: 5px 15px;
+    margin: 5px;
+    text-align: left;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.serverLobby{
+    text-align: center;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.youwin{
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    border-bottom: 100px solid orange;
+    text-align: center;
+    font-size: 100px;
+    height: 80px;
+    z-index: 100000000;
+    font-family: 'Bungee Spice', cursive;
+    text-shadow: black 0px 0px 10px;
+    transition: 0.5s;
+    opacity: 0;
+    display: none;
+}
+
+.tradeButton{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: rgba(245, 245, 245, 0.774) 4px solid;
+    background: url('/assets/imgs/jerryrunicon.png'), #fff5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    display: none;
+}
+
+.partnerScreen{
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    border-bottom: 100px solid orange;
+    text-align: center;
+    font-size: 100px;
+    height: 80px;
+    z-index: 100000000;
+    font-family: 'Bungee Spice', cursive;
+    text-shadow: black 0px 0px 10px;
+    transition: 0.5s;
+    opacity: 0;
+    display: none;
+}

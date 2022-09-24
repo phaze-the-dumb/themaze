@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    </head>
+    <body>
+        <div class="youWin">
+            Finished!<br />
+            <span style="margin-top: 0px; font-family: 'Courier New', Courier, monospace; font-size: 20px;">Finished In: 100th Place</span>
+        </div>
+
+        <div class="mainMenu">
+            <div class="titleImage">The Maze</div>
+            <div class="btnContainer">
+                <button onclick="showTab(tabs[0]); reloadServers();">Join A Server</button>
+            </div>
+            <div class="btnContainer">
+                <button onclick="showTab(tabs[1])">Create A Server</button>
+            </div>
+            <div class="btnContainer">
+                <button onclick="showTab(tabs[2])">Change Name</button>
+            </div>
+        </div>
+
+        <div class="floatingMenu">
+            <div id="joinServerMenu">
+                <div class="titleImage">Join A Server</div><br/>
+                <input type="text" placeholder="Enter Server Code..." id="joinServerCode"><br/><br/>
+
+                <div class="serversList">
+                    
+                </div><br/><br/>
+
+                <button onclick="joinServer(document.querySelector('#joinServerCode').value)">Join</button>
+            </div>
+            <div id="changeNameMenu">
+                <div class="titleImage">Change Name</div><br/>
+                <input type="text" id="nameInput" placeholder="Enter Name..."><br/><br/>
+
+                <button onclick="setName(document.querySelector('#nameInput').value)">Use Name</button>
+            </div>
+            <div id="createServerMenu">
+                <div class="titleImage">Create A Server</div><br/>
+
+                Make Public<br/>
+                <div id="publicCheckBox"></div><br/><br/>
+
+                <div style="display: flex; color: white; text-shadow: black 0 0 5px;">
+                    <div style="width: 100%;">
+                        <p>
+                            Everyone is trying to escape the maze on their own, but you can trade places with a random person every 5 seconds.
+                        </p>
+                        <button onclick="selectMode('Solo')">Solo</button>
+                    </div>
+                    <div style="width: 100%;">
+                        <p>
+                            Get you and your partner out of the maze as quickly as possible before anyone else, you can trade places with them every 5 seconds. REQUIRES AN EVEN NUMBER OF PLAYERS TO PLAY!
+                        </p>
+                        <button onclick="selectMode('Pair')">Pair</button>
+                    </div>
+                </div>
+                <p id="selectedGameMode" style="color: white; text-shadow: black 0 0 5px;">Currently Selected: Solo</p>
+                <br/>
+
+                <button onclick="createServer()">Create</button>
+            </div>
+        </div>
+
+        <div class="serverLobby">
+            <h1 style="font-family: 'Bungee Spice', cursive;" id="serverCode">fuk u</h1>
+            <div id="modeDesc" style="color: white; text-shadow: black 0 0 5px;"></div><br />
+
+            <div id="playersList"></div><br /><br />
+
+            <div>
+                <button onclick="gameStart()">Start Game</button>
+                <button onclick="leaveGame()">Leave</button>
+            </div>
+        </div>
+
+        <div class="partnerScreen">
+            Your Mom<br />
+            <span style="margin-top: 0px; font-family: 'Courier New', Courier, monospace; font-size: 20px;">Is your partner</span>
+        </div>
+
+        <div class="tradeButton" onclick="trade()"></div>
+
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/serverLoader.js"></script>
+        <script src="/assets/js/newServer.js"></script>
+        <script src="/assets/js/movement.js"></script>
+        <script src="/assets/js/render.js"></script>
+        <script src="/assets/js/networking.js"></script>
+    </body>
+</html>
