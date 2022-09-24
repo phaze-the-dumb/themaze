@@ -81,6 +81,16 @@ ws.onmessage = ( data ) => {
     if(msg.type === 'mainMenuLoad'){
         document.querySelector('.mainMenu').style.display = 'block';
         document.querySelector('.serverLobby').style.display = 'none';
+
+        renderOtherPlayers = false;
+        renderSelf = false;
+        allowMovement = false;
+
+        sendPos = false;
+        camDistance = 5;
+
+        playerX = map.width / 2;
+        playerY = map.height / 2;
     }
 
     // if its telling you to spectate setup camera for spectating
