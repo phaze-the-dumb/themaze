@@ -91,7 +91,7 @@ ws.onmessage = ( data ) => {
             allowMovement = true;
 
             sendPos = false;
-            camDistance = 3;
+            camDistance = 4;
 
             document.querySelector('.mainMenu').style.display = 'none';
             document.querySelector('.serverLobby').style.display = 'none';
@@ -139,7 +139,7 @@ ws.onmessage = ( data ) => {
 
         playerX = map.width / 2;
         playerY = map.height / 2;
-        camDistance = 2;
+        camDistance = 4;
         
         renderSelf = false;
         sendPos = false;
