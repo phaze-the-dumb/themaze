@@ -4,6 +4,7 @@ let tabs = [
     document.querySelector('#joinServerMenu'),
     document.querySelector('#createServerMenu'),
     document.querySelector('#changeNameMenu'),
+    document.querySelector('#infoMenu'),
 ]
 let selectedMode = modes[0];
 
