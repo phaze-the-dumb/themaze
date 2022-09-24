@@ -18,6 +18,7 @@ let playerX = map.width / 2,
     camDistance = 5,
     sendPos = false;
 
+
 // Detect Mouse Movements
 window.onmousemove = ( e ) => {
     mouseX = e.clientX - canvas.width / 2;

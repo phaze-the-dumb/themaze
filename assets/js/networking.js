@@ -43,6 +43,24 @@ ws.onmessage = ( data ) => {
             document.querySelector('.serversList').innerHTML = 'Oh Dear, No one seems to be playing right now';
     }
 
+    // onmessage
+    if(msg.type === 'msg'){
+        let div = document.createElement('div');
+        div.classList.add('thefuckyoumessage');
+        div.innerHTML = msg.content + ' <span style="color: skyblue;">'+msg.author+'</span>';
+
+        document.querySelector('.thefuckyouchat').appendChild(div);
+    }
+
+    // onnotice
+    if(msg.type === 'notice'){
+        let div = document.createElement('div');
+        div.classList.add('thefuckyoumessage');
+        div.innerHTML = '<span style="color: #47e50d;">'+msg.content+'</span>';
+
+        document.querySelector('.thefuckyouchat').appendChild(div);
+    }
+
     // if its focing you to open the main menu, open the main menu
     if(msg.type === 'mainMenuLoad'){
         document.querySelector('.mainMenu').style.display = 'block';

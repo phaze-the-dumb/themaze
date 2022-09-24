@@ -68,29 +68,29 @@ let moveExit = () => {
 moveExit();
 
 // Setting Up The Canvas
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth * window.devicePixelRatio;
+canvas.height = window.innerHeight * window.devicePixelRatio;
 ctx.translate(canvas.width / 2, canvas.height / 2);
 
-wallCanvas.width = window.innerWidth;
-wallCanvas.height = window.innerHeight;
+wallCanvas.width = window.innerWidth * window.devicePixelRatio;
+wallCanvas.height = window.innerHeight * window.devicePixelRatio;
 wallCtx.translate(canvas.width / 2, canvas.height / 2);
 
-motionBlurCanvas.width = window.innerWidth;
-motionBlurCanvas.height = window.innerHeight;
+motionBlurCanvas.width = window.innerWidth * window.devicePixelRatio;
+motionBlurCanvas.height = window.innerHeight * window.devicePixelRatio;
 motionBlurCtx.translate(canvas.width / 2, canvas.height / 2);
 
 window.onresize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth * window.devicePixelRatio;
+    canvas.height = window.innerHeight * window.devicePixelRatio;
     ctx.translate(canvas.width / 2, canvas.height / 2);
 
-    wallCanvas.width = window.innerWidth;
-    wallCanvas.height = window.innerHeight;
+    wallCanvas.width = window.innerWidth * window.devicePixelRatio;
+    wallCanvas.height = window.innerHeight * window.devicePixelRatio;
     wallCtx.translate(wallCanvas.width / 2, wallCanvas.height / 2);
 
-    motionBlurCanvas.width = window.innerWidth;
-    motionBlurCanvas.height = window.innerHeight;
+    motionBlurCanvas.width = window.innerWidth * window.devicePixelRatio;
+    motionBlurCanvas.height = window.innerHeight * window.devicePixelRatio;
     motionBlurCtx.translate(motionBlurCanvas.width / 2, motionBlurCanvas.height / 2);
 }
 

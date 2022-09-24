@@ -3,7 +3,14 @@
 body{
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
-    background: black;
+    background: rgb(0, 0, 0);
+}
+
+canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -10000000000;
 }
 
 .errorMessage{
@@ -195,7 +202,7 @@ input{
     height: 75px;
     border-radius: 50%;
     border: rgba(245, 245, 245, 0.774) 4px solid;
-    background: url('/assets/imgs/jerryrunicon.png'), #fff5;
+    background: url('../assets/imgs/jerryrunicon.png'), #fff5;
     background-size: cover;
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -222,4 +229,30 @@ input{
     transition: 0.5s;
     opacity: 0;
     display: none;
+}
+
+.noZoomText{
+    position: fixed;
+    bottom: 100px;
+    left: 0;
+    z-index: -100000000000;
+    font-size: 150px;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
+.thefuckyouchat{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: right; 
+}
+
+.thefuckyoumessage{
+    background: #0005;
+    padding: 5px 10px;
+    font-size: 20px;
+    min-width: 350px;
+    max-width: 600px;
 }

@@ -19,6 +19,12 @@ let render = () => {
     requestAnimationFrame(render);
     fpsCount++;
 
+    if(window.devicePixelRatio === 1){
+        document.querySelector('.noZoomText').style.display = 'none';
+    } else{
+        document.querySelector('.noZoomText').style.display = 'block';
+    }
+
     if(motionBlurHell){
         motionBlurCtx.clearRect(canvas.width / -2, canvas.height / -2, canvas.width, canvas.height);
         motionBlurCtx.drawImage(canvas, canvas.width / -2, canvas.height / -2);
@@ -28,7 +34,6 @@ let render = () => {
     ctx.clearRect(canvas.width / -2, canvas.height / -2, canvas.width, canvas.height);
     wallCtx.clearRect(canvas.width / -2, canvas.height / -2, canvas.width, canvas.height);
     
-
     move();
     renderedBlocks = 0;
 
