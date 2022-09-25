@@ -48,7 +48,9 @@ let loadPlayerList = ( plrs ) => {
 }
 
 let playerJoin = ( pl ) => {
+    if(oplayers.find(x => x.id === pl.id))return;
     oplayers.push(pl);
+    
     let playerListText = '';
     playerListText += '<button style="display: inline-block;">You</button>';
 
