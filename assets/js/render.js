@@ -1,7 +1,7 @@
 let lerp = (x, y, a) => x * (1 - a) + y * a,
     fps = 0,
     fpsCount = 0,
-    devScreen = true,
+    devScreen = false,
     motionBlurHell = false,
     renderOtherPlayers = false,
     renderSelf = false;
@@ -33,12 +33,6 @@ let renderedBlocks = 0;
 let render = () => {
     requestAnimationFrame(render);
     fpsCount++;
-
-    if(window.devicePixelRatio === 1){
-        document.querySelector('.noZoomText').style.display = 'none';
-    } else{
-        document.querySelector('.noZoomText').style.display = 'block';
-    }
 
     if(motionBlurHell){
         motionBlurCtx.clearRect(canvas.width / -2, canvas.height / -2, canvas.width, canvas.height);
