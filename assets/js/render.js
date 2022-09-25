@@ -15,6 +15,9 @@ hedge1.src = '/assets/imgs/hedge.png';
 let grass1 = new Image();
 grass1.src = '/assets/imgs/grass.png';
 
+let exit1 = new Image();
+exit1.src = '/assets/imgs/end.png';
+
 let hedgeMoveX = 0,
     hedgeMoveY = 0;
 
@@ -71,8 +74,7 @@ let render = () => {
 
     // Exit
     ctx.shadowBlur = 0;
-    ctx.fillStyle = '#000';
-    ctx.fillRect(((20 * map.exit.x) - camX) * camScale, ((20 * map.exit.y) - camY) * camScale, 20 * camScale, 20 * camScale);
+    ctx.drawImage(exit1, ((20 * map.exit.x) - camX) * camScale, ((20 * map.exit.y) - camY) * camScale, 20 * camScale, 20 * camScale);
 
     // Player
     if(renderSelf)
