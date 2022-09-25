@@ -12,16 +12,16 @@
         <div class="mainMenu">
             <div class="titleImage">The Maze</div>
             <div class="btnContainer">
-                <button onclick="showTab(tabs[0]); reloadServers();">Join A Server</button>
+                <button onclick="showTab(tabs[0]); playClick(); reloadServers();">Join A Server</button>
             </div>
             <div class="btnContainer">
-                <button onclick="showTab(tabs[1])">Create A Server</button>
+                <button onclick="showTab(tabs[1]); playClick();">Create A Server</button>
             </div>
             <div class="btnContainer">
-                <button onclick="showTab(tabs[2])">Change Name</button>
+                <button onclick="showTab(tabs[2]); playClick();">Change Name</button>
             </div>
             <div class="btnContainer">
-                <button onclick="showTab(tabs[3])">Game Info</button>
+                <button onclick="showTab(tabs[3]); playClick();">Game Info</button>
             </div>
         </div>
 
@@ -34,13 +34,13 @@
                     
                 </div><br/><br/>
 
-                <button onclick="joinServer(document.querySelector('#joinServerCode').value)">Join</button>
+                <button onclick="joinServer(document.querySelector('#joinServerCode').value); playClick();">Join</button>
             </div>
             <div id="changeNameMenu">
                 <div class="titleImage">Change Name</div><br/>
                 <input type="text" id="nameInput" placeholder="Enter Name..."><br/><br/>
 
-                <button onclick="setName(document.querySelector('#nameInput').value)">Use Name</button>
+                <button onclick="setName(document.querySelector('#nameInput').value); playClick();">Use Name</button>
             </div>
             <div id="createServerMenu">
                 <div class="titleImage">Create A Server</div><br/>
@@ -53,19 +53,19 @@
                         <p>
                             Everyone is trying to escape the maze on their own, but you can trade places with a random person every 5 seconds.
                         </p>
-                        <button onclick="selectMode('Solo')">Solo</button>
+                        <button onclick="selectMode('Solo'); playClick();">Solo</button>
                     </div>
                     <div style="width: 100%;">
                         <p>
                             Get you and your partner out of the maze as quickly as possible before anyone else, you can trade places with them every 5 seconds. REQUIRES AN EVEN NUMBER OF PLAYERS TO PLAY!
                         </p>
-                        <button onclick="selectMode('Pair')">Pair</button>
+                        <button onclick="selectMode('Pair'); playClick();">Pair</button>
                     </div>
                 </div>
                 <p id="selectedGameMode" style="color: white; text-shadow: black 0 0 5px;">Currently Selected: Solo</p>
                 <br/>
 
-                <button onclick="createServer()">Create</button>
+                <button onclick="createServer(); playClick();">Create</button>
             </div>
             <div id="infoMenu">
                 <div class="titleImage">Information</div><br/>
@@ -77,6 +77,8 @@
 
                     <span style="font-size: 25px;">Known Bugs.</span><br/>
                     - Sometimes the exit will spawn in places it is not supposed to be making the maze impossible<br />
+                    - Cloudflare sometimes times out the websocket connection if no data is sent across it<br />
+                    - Sometimes players don't leave servers properly, resulting in "ghost players"<br />
                     - The collision system needs work<br /><br />
 
                     If you encounter any of these reload and try joining or creating a new server
@@ -98,9 +100,9 @@
             <div id="playersList"></div><br /><br />
 
             <div>
-                <button onclick="gameEnd()" id="endGameBtn">End Game</button>
-                <button onclick="gameStart()" id="startGameBtn">Start Game</button>
-                <button onclick="leaveGame()">Leave</button>
+                <button onclick="gameEnd(); playClick();" id="endGameBtn">End Game</button>
+                <button onclick="gameStart(); playClick();" id="startGameBtn">Start Game</button>
+                <button onclick="leaveGame(); playClick();">Leave</button>
             </div>
         </div>
 
@@ -122,5 +124,6 @@
         <script src="/assets/js/movement.js"></script>
         <script src="/assets/js/render.js"></script>
         <script src="/assets/js/networking.js"></script>
+        <script src="/assets/js/audio.js"></script>
     </body>
 </html>
