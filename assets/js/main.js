@@ -9,7 +9,10 @@ let motionBlurCanvas = document.createElement('canvas'),
 
 let isMenuOpen = true,
     isChatOpen = false,
-    isGameMenuOpen = false;
+    isGameMenuOpen = false,
+    badWords = [];
+
+fetch('/assets/data/badwords.txt').then(data => data.text()).then(data => badWords = data.split('\r\n'));
 
 let map = {
     width: 1000,
@@ -121,6 +124,17 @@ let showError = ( body, allowClose = true ) => {
 let setName = ( name ) => {
     if(name.trim() === '')return showError("Name Cannot Be Empty", true);
     if(name.length > 25)name = name.slice(0, 25);
+    
+    let newName = [];
+    name.split(' ').forEach(word => {
+        if(badWords.find(x => x === word)){
+            newName.push('****');
+        } else{
+            newName.push(word);
+        }
+    })
+
+    name = newName.join(' ');
 
     document.querySelector('.mainMenu').style.display = 'block';
     localStorage.setItem('playerName', name);

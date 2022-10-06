@@ -123,7 +123,17 @@ window.onkeyup = (e) => {
             isChatOpen = false;
 
             document.querySelector('.textChatInput').style.display = 'none';
-            ws.send(JSON.stringify({ type: 'sendMsg', content: document.querySelector('.textChatInput').value }));
+
+            let newName = [];
+            document.querySelector('.textChatInput').value.split(' ').forEach(word => {
+                if(badWords.find(x => x === word)){
+                    newName.push('****');
+                } else{
+                    newName.push(word);
+                }
+            })
+
+            ws.send(JSON.stringify({ type: 'sendMsg', content: newName.join(' ') }));
 
             document.querySelector('.textChatInput').value = '';
         } else{
