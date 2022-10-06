@@ -4,7 +4,8 @@ let lerp = (x, y, a) => x * (1 - a) + y * a,
     devScreen = false,
     motionBlurHell = false,
     renderOtherPlayers = false,
-    renderSelf = false;
+    renderSelf = false,
+    allowShadows = true;
 
 let stickman = new Image();
 stickman.src = '/assets/imgs/jerry.png';
@@ -33,6 +34,44 @@ let renderedBlocks = 0;
 let render = () => {
     requestAnimationFrame(render);
     fpsCount++;
+
+    if(fps < 55){
+        if(allowShadows){
+            let div = document.createElement('div');
+            div.classList.add('thefuckyoumessage');
+            div.innerHTML = '<span style="color: #f27de4;">FPS Below 55, Disabling Shadows</span>';
+
+            document.querySelector('.thefuckyouchat').appendChild(div);
+
+            setTimeout(() => {
+                div.style.opacity = '0';
+
+                setTimeout(() => {
+                    div.remove();
+                }, 250);
+            }, 10000);
+        }
+
+        allowShadows = false;
+    } else{
+        if(!allowShadows){
+            let div = document.createElement('div');
+            div.classList.add('thefuckyoumessage');
+            div.innerHTML = '<span style="color: #f27de4;">FPS Above 55, Enabling Shadows</span>';
+
+            document.querySelector('.thefuckyouchat').appendChild(div);
+
+            setTimeout(() => {
+                div.style.opacity = '0';
+
+                setTimeout(() => {
+                    div.remove();
+                }, 250);
+            }, 10000);
+        }
+
+        allowShadows = true;
+    }
 
     if(motionBlurHell){
         motionBlurCtx.clearRect(canvas.width / -2, canvas.height / -2, canvas.width, canvas.height);
@@ -100,8 +139,13 @@ let render = () => {
         }
     })
 
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = '#000';
+    if(allowShadows){
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#000';
+    } else{
+        ctx.shadowBlur = 0;
+        ctx.shadowColor = '#000';
+    }
 
     ctx.drawImage(wallCanvas, canvas.width / -2, canvas.height / -2);
 

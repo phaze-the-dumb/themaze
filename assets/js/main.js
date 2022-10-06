@@ -119,10 +119,14 @@ let showError = ( body, allowClose = true ) => {
 
 // Changing Name On Server
 let setName = ( name ) => {
+    if(name.trim() === '')return showError("Name Cannot Be Empty", true);
     if(name.length > 25)name = name.slice(0, 25);
 
+    document.querySelector('.mainMenu').style.display = 'block';
     localStorage.setItem('playerName', name);
+
     ws.send(JSON.stringify({ type: 'fixName', name }));
+    showTab(tabs[0]);
 }
 
 // Utils for 1st, 2nd, 3rd, 4th, etc..

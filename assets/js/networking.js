@@ -1,5 +1,5 @@
 // Create Socket and init variables
-let ws = new WebSocket('wss://ws.phazed.xyz:2053');
+let ws = new WebSocket('ws://192.168.11.13:2053');
 let lastMessageRecived = null;
 let hasItError = false;
 let partner = {};
