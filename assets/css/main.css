@@ -272,3 +272,18 @@ input{
     width: 50%;
     display: none;
 }
+
+.playerBox{
+    background: #0005;
+    border-radius: 5px;
+    color: white;
+    width: 250px;
+    height: 80px;
+    display: inline-flex;
+    padding: 10px;
+}
+
+.playerName{
+    font-weight: bold;
+    font-size: 20px;
+}
