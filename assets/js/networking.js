@@ -21,7 +21,6 @@ ws.onopen = () => {
 
 // When the server sends us data
 ws.onmessage = ( data ) => {
-    console.log(data);
     // Parse it as JSON
     let msg = JSON.parse(data.data);
     lastMessageRecived = msg.type;
